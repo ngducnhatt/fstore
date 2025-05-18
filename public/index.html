@@ -4,41 +4,197 @@
     <meta charset="UTF-8" />
     <meta name="viewport" content="width=device-width, initial-scale=1.0" />
     <title>F STORE</title>
-    <link rel="stylesheet" href="style.css" />
+    <script src="https://cdn.tailwindcss.com"></script>
   </head>
-  <body>
-    <header>
-      <div class="logo">
-        <img src="./assets/logo.svg" alt="logo" />
+  <body class="bg-gray-900 min-h-screen text-gray-100">
+    <header class="bg-gray-800 shadow-lg">
+      <div class="container mx-auto px-4 py-4">
+        <div class="flex justify-between items-center">
+          <div class="logo">
+            <img src="./assets/logo.svg" alt="logo" class="h-12" />
+          </div>
+          <nav>
+            <ul class="flex space-x-6">
+              <li>
+                <a
+                  href="#"
+                  class="text-gray-300 hover:text-blue-400 transition-colors"
+                  >Trang chủ</a
+                >
+              </li>
+              <li>
+                <a
+                  href="#"
+                  class="text-gray-300 hover:text-blue-400 transition-colors"
+                  >ACCOUNT</a
+                >
+              </li>
+              <li>
+                <a
+                  href="#"
+                  class="text-gray-300 hover:text-blue-400 transition-colors"
+                  >THẺ CÀO</a
+                >
+              </li>
+              <li>
+                <a
+                  href="#"
+                  class="text-gray-300 hover:text-blue-400 transition-colors"
+                  >SKIN CS2 - CODE STEAM</a
+                >
+              </li>
+            </ul>
+          </nav>
+        </div>
       </div>
-      <nav>
-        <ul>
-          <li><a href="#">Trang chủ</a></li>
-          <li><a href="#">ACCOUNT</a></li>
-          <li><a href="#">THẺ CÀO</a></li>
-          <li><a href="#">SKIN CS2 - CODE STEAM</a></li>
-        </ul>
-      </nav>
     </header>
-    <main>
-      <div class="checkout">
-        <div class="product1">
-          <p><strong>Tên sản phẩm:</strong>ACCOUNT LOL PBE</p>
-          <p><strong>Giá tiền:</strong> 5000 VNĐ</p>
-        </div>
+
+    <main class="container mx-auto px-4 py-8">
+      <div class="max-w-6xl mx-auto">
+        <h1 class="text-3xl font-bold text-center mb-8 text-blue-400">
+          Giỏ hàng của bạn
+        </h1>
+
+        <form
+          id="paymentForm"
+          action="/create-payment-link"
+          method="post"
+          class="space-y-6"
+        >
+          <div class="grid grid-cols-1 md:grid-cols-2 gap-6">
+            <div
+              class="bg-gray-800 rounded-lg shadow-lg p-6 hover:shadow-blue-500/20 transition-shadow cursor-pointer product-card"
+              data-product-id="lol-pbe"
+              data-price="5000"
+            >
+              <div class="flex flex-col h-full">
+                <div class="flex-grow">
+                  <h3 class="text-xl font-semibold text-blue-400 mb-2">
+                    ACCOUNT LOL PBE
+                  </h3>
+                  <p class="text-gray-400 mb-4">
+                    Tài khoản League of Legends PBE với đầy đủ skin và tướng
+                  </p>
+                  <ul class="text-gray-300 space-y-2 mb-4">
+                    <li>✓ Đầy đủ tướng</li>
+                    <li>✓ Nhiều skin hiếm</li>
+                    <li>✓ Rank cao</li>
+                  </ul>
+                </div>
+                <div class="mt-auto">
+                  <p class="text-2xl font-bold text-blue-400 mb-4">5,000 VNĐ</p>
+                </div>
+              </div>
+            </div>
+
+            <div
+              class="bg-gray-800 rounded-lg shadow-lg p-6 hover:shadow-blue-500/20 transition-shadow cursor-pointer product-card"
+              data-product-id="valorant"
+              data-price="15000"
+            >
+              <div class="flex flex-col h-full">
+                <div class="flex-grow">
+                  <h3 class="text-xl font-semibold text-blue-400 mb-2">
+                    ACCOUNT VALORANT
+                  </h3>
+                  <p class="text-gray-400 mb-4">
+                    Tài khoản Valorant với nhiều skin đẹp và agent
+                  </p>
+                  <ul class="text-gray-300 space-y-2 mb-4">
+                    <li>✓ Đầy đủ agent</li>
+                    <li>✓ Nhiều skin premium</li>
+                    <li>✓ Rank cao</li>
+                  </ul>
+                </div>
+                <div class="mt-auto">
+                  <p class="text-2xl font-bold text-blue-400 mb-4">
+                    15,000 VNĐ
+                  </p>
+                </div>
+              </div>
+            </div>
+          </div>
+
+          <input type="hidden" id="selectedProduct" name="productId" value="" />
+          <input type="hidden" id="selectedPrice" name="price" value="" />
+
+          <div class="mt-8 bg-gray-800 rounded-lg shadow-lg p-6">
+            <div class="space-y-4">
+              <div>
+                <label
+                  for="email"
+                  class="block text-sm font-medium text-gray-300 mb-1"
+                  >Email của bạn</label
+                >
+                <input
+                  type="email"
+                  id="email"
+                  name="email"
+                  class="w-full px-4 py-2 bg-gray-700 border border-gray-600 rounded-md focus:ring-2 focus:ring-blue-500 focus:border-blue-500 text-gray-100"
+                  placeholder="Nhập email của bạn"
+                  required
+                />
+              </div>
+              <button
+                type="submit"
+                class="w-full bg-blue-600 text-white py-3 px-6 rounded-md hover:bg-blue-700 transition-colors font-semibold"
+                id="submitButton"
+                disabled
+              >
+                Tạo Link thanh toán
+              </button>
+            </div>
+          </div>
+        </form>
       </div>
-      <div class="checkout">
-        <div class="product2">
-          <p><strong>Tên sản phẩm:</strong>ACCOUNT VALORANT</p>
-          <p><strong>Giá tiền:</strong> 15000 VNĐ</p>
-        </div>
-      </div>
-      <input type="email" name="" id="" />
-      <form action="/create-payment-link" method="post">
-        <button type="submit" id="create-payment-link-btn">
-          Tạo Link thanh toán
-        </button>
-      </form>
     </main>
+
+    <footer class="bg-gray-800 mt-12 py-6">
+      <div class="container mx-auto px-4 text-center text-gray-400">
+        <p>© 2024 F STORE. All rights reserved.</p>
+      </div>
+    </footer>
+
+    <script>
+      document.addEventListener("DOMContentLoaded", function () {
+        const productCards = document.querySelectorAll(".product-card");
+        const selectedProductInput = document.getElementById("selectedProduct");
+        const selectedPriceInput = document.getElementById("selectedPrice");
+        const submitButton = document.getElementById("submitButton");
+        const emailInput = document.getElementById("email");
+
+        // Xử lý chọn sản phẩm
+        productCards.forEach((card) => {
+          card.addEventListener("click", function () {
+            // Bỏ chọn tất cả các card
+            productCards.forEach((c) =>
+              c.classList.remove("ring-2", "ring-blue-500")
+            );
+
+            // Chọn card được click
+            this.classList.add("ring-2", "ring-blue-500");
+
+            // Cập nhật giá trị ẩn
+            selectedProductInput.value = this.dataset.productId;
+            selectedPriceInput.value = this.dataset.price;
+
+            // Kiểm tra điều kiện enable/disable nút submit
+            checkSubmitButton();
+          });
+        });
+
+        // Xử lý input email
+        emailInput.addEventListener("input", checkSubmitButton);
+
+        // Hàm kiểm tra điều kiện enable/disable nút submit
+        function checkSubmitButton() {
+          const isProductSelected = selectedProductInput.value !== "";
+          const isEmailValid = emailInput.value.match(
+            /^[^\s@]+@[^\s@]+\.[^\s@]+$/
+          );
+          submitButton.disabled = !(isProductSelected && isEmailValid);
+        }
+      });
+    </script>
   </body>
 </html>
